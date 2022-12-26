@@ -112,16 +112,6 @@ def test_csii(filePair,expected_vals):
     numpy.testing.assert_allclose(CSIIm, expected_vals[7], rtol=RTOL, atol=ATOL)
     numpy.testing.assert_allclose(CSIIl, expected_vals[8], rtol=RTOL, atol=ATOL)
 
-    
-@pytest.mark.parametrize('filePair,expected_vals', testScenarios) 
-def test_pesq(filePair,expected_vals):
-    RTOL = 5e-4
-    ATOL = 0
-    
-    cleanSig,enhancedSig,fs=load_preprocess_filepair(filePair,True,16e3)
-    pesq_mos,mos_lqo=pm.pesq(cleanSig, enhancedSig, fs)
-    numpy.testing.assert_allclose(mos_lqo, expected_vals[10], rtol=RTOL, atol=ATOL)
-
 @pytest.mark.parametrize('filePair,expected_vals', testScenarios) 
 def test_composite(filePair,expected_vals):
     RTOL = 5e-4

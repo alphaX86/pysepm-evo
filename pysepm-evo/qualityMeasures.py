@@ -1,7 +1,6 @@
 from scipy.signal import stft,get_window,correlate,resample
 from scipy.linalg import solve_toeplitz,toeplitz
 import scipy
-import pesq as pypesq # https://github.com/ludlows/python-pesq
 import numpy as np
 from numba import jit
 from .util import extract_overlapped_windows
@@ -344,24 +343,11 @@ def wss(clean_speech, processed_speech, fs, frameLen=0.03, overlap=0.75):
     distortion = distortion[:int(round(len(distortion)*alpha))]
     return np.mean(distortion)
 
-def pesq(clean_speech, processed_speech, fs):
-    if fs == 8000:
-        mos_lqo = pypesq.pesq(fs,clean_speech, processed_speech, 'nb')
-        pesq_mos = 46607/14945 - (2000*np.log(1/(mos_lqo/4 - 999/4000) - 1))/2989#0.999 + ( 4.999-0.999 ) / ( 1+np.exp(-1.4945*pesq_mos+4.6607) )
-    elif fs == 16000:
-        mos_lqo = pypesq.pesq(fs,clean_speech, processed_speech, 'wb')
-        pesq_mos = np.NaN
-    else:
-        raise ValueError('fs must be either 8 kHz or 16 kHz')
-        
-    return pesq_mos,mos_lqo
-
 
 def composite(clean_speech, processed_speech, fs):
     wss_dist=wss(clean_speech, processed_speech, fs)
     llr_mean=llr(clean_speech, processed_speech, fs,used_for_composite=True)
     segSNR=SNRseg(clean_speech, processed_speech, fs)
-    pesq_mos,mos_lqo = pesq(clean_speech, processed_speech,fs)
     
     if fs >= 16e3:
         used_pesq_val = mos_lqo

@@ -1,12 +1,14 @@
-# pysepm - Python Speech Enhancement Performance Measures (Quality and Intelligibility)
+# pysepm-evo - Python Speech Enhancement Performance Measures (Quality and Intelligibility)
 [![DOI](https://zenodo.org/badge/220233987.svg)](https://zenodo.org/badge/latestdoi/220233987)
 
-Python implementation of objective quality and intelligibilty measures mentioned in Philipos C. Loizou's great [Speech Enhancement Book](https://www.crcpress.com/Speech-Enhancement-Theory-and-Practice-Second-Edition/Loizou/p/book/9781138075573). The Python implementations are checked with the MATLAB implementations attached to the book (see [Link](https://crcpress.com/downloads/K14513/K14513_CD_Files.zip))
+PyPI released version of [pysepm](https://github.com/schmiph2/pysepm). Please note that this package doesn't include the usage pf `pesq`. To use SRMRpy, type the following:
+
+    pip install https://github.com/jfsantos/SRMRpy/archive/master.zip#egg=SRMRpy
 
 # Install with pip
-Install pysepm:
+Install pysepm-evo:
 ```
-pip3 install https://github.com/schmiph2/pysepm/archive/master.zip
+pip3 install pyseqm-evo
 ```
 # Examples
 Please find a Jupyter Notebook with examples for all implemented measures in the [examples folder](https://github.com/schmiph2/pysepm/tree/master/examples).
@@ -17,7 +19,7 @@ Please find a Jupyter Notebook with examples for all implemented measures in the
 + Frequency-weighted Segmental SNR (fwSNRseg)
 + Log-likelihood Ratio (LLR)
 + Weighted Spectral Slope (WSS)
-+ Perceptual Evaluation of Speech Quality (PESQ), ([python-pesq](https://github.com/ludlows/python-pesq) implementation by ludlows)
+implementation by ludlows)
 + Composite Objective Speech Quality (composite)
 + Cepstrum Distance Objective Speech Quality Measure (CD)
 
