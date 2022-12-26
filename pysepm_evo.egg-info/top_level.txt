@@ -1,1 +1,1 @@
-pysepm-evo
+pysepm_evo

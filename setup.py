@@ -2,7 +2,7 @@ from setuptools import setup,find_packages
 
 setup(
     name='pysepm-evo',
-    version='0.1.0',
+    version='0.1.1',
     description='Computes Objective Quality measures',
     author='Aadhitya A',
     author_email='aadhitya864@gmail.com',
